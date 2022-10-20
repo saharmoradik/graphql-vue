@@ -1,6 +1,24 @@
 <template>
-  <div>
-    {{ characters }}
+  <div class="container">
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        v-for="character in characters.characters.results"
+        :key="character.id"
+      >
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            :src="`${character.image}`"
+            alt="Card image cap"
+          />
+
+          <div class="card-body">
+            <h5 class="card-title">{{ character.name }}</h5>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
