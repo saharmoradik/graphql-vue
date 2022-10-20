@@ -1,6 +1,6 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-//import { DefaultApolloClient } from "@vue/apollo-composable";
-import { createApp } from "vue";
+import { ApolloClient, InMemoryCache /* gql*/ } from "@apollo/client";
+import { DefaultApolloClient } from "@vue/apollo-composable";
+import { createApp, provide, h } from "vue";
 import App from "./App.vue";
 
 const defaultClient = new ApolloClient({
@@ -8,13 +8,14 @@ const defaultClient = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const query = gql`
+/*const query = gql`
   query {
     characters {
       results {
         id
         name
         species
+        image
       }
     }
   }
@@ -24,6 +25,13 @@ defaultClient
   .query({
     query,
   })
-  .then((res) => console.log(res));
+  .then((res) => console.log(res));*/
 
-createApp(App).mount("#app");
+createApp({
+  setup() {
+    provide(DefaultApolloClient, defaultClient);
+  },
+  render() {
+    return h(App);
+  },
+}).mount("#app");
