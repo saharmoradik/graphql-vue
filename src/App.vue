@@ -1,28 +1,23 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    {{ message }}
+    {{ characters }}
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import { ref } from "vue";
 import { useQuery } from "@vue/apollo-composable";
 import allCharacters from "../src/graphql/allCharacters.query.gql";
+import { computed } from "vue";
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: {},
   setup() {
-    const message = ref("Hello Jason!");
     const { result } = useQuery(allCharacters);
-    console.log(result);
+    const characters = computed(() => result.value);
     return {
-      message,
+      characters,
     };
   },
 };
