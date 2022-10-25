@@ -1,16 +1,16 @@
 <template>
-  <div class="container">
+  <div class="container d-flex justify-content-center align-items-center">
     <ul class="list-group list-group-flush">
       <li
         class="list-group-item"
         v-for="character in characters.characters.results"
         :key="character.id"
       >
-        <div class="card" style="width: 18rem">
+        <div class="card">
           <img
             class="card-img-top"
             :src="`${character.image}`"
-            alt="Card image cap"
+            alt="Card image "
           />
 
           <div class="card-body">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+//import { ref } from "vue";
 import { useQuery } from "@vue/apollo-composable";
 import allCharacters from "../src/graphql/allCharacters.query.gql";
 import { computed } from "vue";

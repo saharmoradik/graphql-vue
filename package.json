@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "graphql": "^15.3.0",
     "react": "^16.13.1",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "webpack": "^4.39.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
