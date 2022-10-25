@@ -6,16 +6,8 @@
         v-for="character in characters.characters.results"
         :key="character.id"
       >
-        <div class="card">
-          <img
-            class="card-img-top"
-            :src="`${character.image}`"
-            alt="Card image "
-          />
-
-          <div class="card-body">
-            <h5 class="card-title">{{ character.name }}</h5>
-          </div>
+        <div class="col md-3">
+          <Card :character="character" />
         </div>
       </li>
     </ul>
@@ -27,10 +19,11 @@
 import { useQuery } from "@vue/apollo-composable";
 import allCharacters from "../src/graphql/allCharacters.query.gql";
 import { computed } from "vue";
+import Card from "./components/Card.vue";
 
 export default {
   name: "App",
-  components: {},
+  components: { Card },
   setup() {
     const { result } = useQuery(allCharacters);
     const characters = computed(() => result.value);
