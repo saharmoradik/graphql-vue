@@ -1,16 +1,14 @@
 <template>
   <div class="container d-flex justify-content-center align-items-center">
-    <ul class="list-group list-group-flush">
-      <li
-        class="list-group-item"
+    <div class="row">
+      <div
+        class="col col-lg-3 col-md-4"
         v-for="character in characters.characters.results"
         :key="character.id"
       >
-        <div class="col md-3">
-          <Card :character="character" />
-        </div>
-      </li>
-    </ul>
+        <Card :character="character" />
+      </div>
+    </div>
   </div>
 </template>
 
